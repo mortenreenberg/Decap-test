@@ -173,10 +173,17 @@
 
 <!-- ============ ÅNDEAFTENER (SPOTLIGHT) ============ -->
 <section id="aandeaftener" class="bg-ink py-24 md:py-32 relative overflow-hidden">
-  <div class="absolute inset-0 opacity-[0.08] pointer-events-none"
+  <!-- Valgfri baggrundsvideo (sat via CMS). Falder tilbage til de dekorative
+       guld-gløder nedenfor, hvis der ikke er uploadet en video. -->
+  <video id="aandeaften-video"
+         class="hidden absolute inset-0 w-full h-full object-cover z-0"
+         muted loop playsinline preload="auto"></video>
+  <div id="aandeaften-scrim" class="hidden absolute inset-0 bg-ink/55 z-[1]"></div>
+
+  <div id="spotlight-decor" class="absolute inset-0 opacity-[0.08] pointer-events-none z-0"
        style="background-image: radial-gradient(circle at 15% 20%, #C6A15B 0, transparent 38%), radial-gradient(circle at 85% 80%, #C6A15B 0, transparent 38%);"></div>
 
-  <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center relative">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center relative z-10">
     <div class="flex items-center justify-center gap-3 mb-5">
       <span class="h-px w-8 bg-gold/50"></span>
       <span id="spotlight-eyebrow" class="tracked uppercase text-gold-light text-xs md:text-sm"></span>
@@ -437,6 +444,31 @@
     const btn = document.getElementById('spotlight-button');
     btn.textContent = spotlight.button_text || 'Reservér din plads';
     btn.href = spotlight.button_url || '#';
+
+    const video = document.getElementById('aandeaften-video');
+    const scrim = document.getElementById('aandeaften-scrim');
+    const decor = document.getElementById('spotlight-decor');
+
+    if (spotlight.background_video) {
+      video.src = spotlight.background_video;
+      if (spotlight.background_video_poster) {
+        video.poster = spotlight.background_video_poster;
+      }
+      video.classList.remove('hidden');
+      scrim.classList.remove('hidden');
+      decor.classList.add('hidden');
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReducedMotion) {
+        video.play().catch(() => {
+          // Autoplay blokeret af browseren - posterbilledet vises i stedet, helt fint.
+        });
+      }
+    } else {
+      video.classList.add('hidden');
+      scrim.classList.add('hidden');
+      decor.classList.remove('hidden');
+    }
   }
 
   function renderTestimonials(testimonials) {

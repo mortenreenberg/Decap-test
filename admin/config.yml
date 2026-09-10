@@ -97,6 +97,16 @@ collections:
               - { label: "Sted", name: "location_value", widget: "string" }
               - { label: "Knaptekst", name: "button_text", widget: "string", default: "Reservér din plads" }
               - { label: "Knap-link", name: "button_url", widget: "string", default: "#kontakt" }
+              - label: "Baggrundsvideo (valgfri, MP4 uden lyd)"
+                name: "background_video"
+                widget: "file"
+                required: false
+                hint: "Kort, stille loop-video. Uploades der ingen video, vises der i stedet et dekorativt guld-motiv på mørk baggrund."
+              - label: "Posterbillede til video"
+                name: "background_video_poster"
+                widget: "image"
+                required: false
+                hint: "Vises mens videoen indlæses, og hvis browseren ikke kan afspille videoen."
 
           - label: "Udtalelser"
             name: "testimonials"

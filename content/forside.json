@@ -62,7 +62,9 @@
     "location_label": "Sted",
     "location_value": "Oplyses ved tilmelding",
     "button_text": "Reservér din plads",
-    "button_url": "#kontakt"
+    "button_url": "#kontakt",
+    "background_video": "/images/uploads/aandeaften-bg.mp4",
+    "background_video_poster": "/images/uploads/aandeaften-poster.jpg"
   },
   "testimonials": {
     "eyebrow": "Oplevelser",

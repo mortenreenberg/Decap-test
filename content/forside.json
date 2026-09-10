@@ -2,14 +2,14 @@
   "nav": {
     "logo": "Kim Nielsen",
     "links": [
-      { "label": "Forside", "url": "/" },
-      { "label": "Om mig", "url": "/om-mig" },
-      { "label": "Ydelser", "url": "/ydelser" },
-      { "label": "Åndeaftener", "url": "/aandeaftener" },
-      { "label": "Kontakt", "url": "/kontakt" }
+      { "label": "Forside", "url": "#hero" },
+      { "label": "Om mig", "url": "#om-mig" },
+      { "label": "Ydelser", "url": "#ydelser" },
+      { "label": "Åndeaftener", "url": "#aandeaftener" },
+      { "label": "Kontakt", "url": "#kontakt" }
     ],
     "cta_text": "Book tid",
-    "cta_url": "/book"
+    "cta_url": "#kontakt"
   },
   "hero": {
     "tags": ["Clairvoyance", "Healing", "Åndeaftener"],
@@ -17,9 +17,88 @@
     "subheading": "Sind · Hjerte · Krop",
     "body": "Der er mere i dig, end du måske har opdaget endnu.",
     "primary_button_text": "Læs mere",
-    "primary_button_url": "/om-mig",
+    "primary_button_url": "#om-mig",
     "secondary_button_text": "Kontakt mig",
-    "secondary_button_url": "/kontakt",
+    "secondary_button_url": "#kontakt",
     "background_image": "/images/uploads/hero-background.jpg"
+  },
+  "intro": {
+    "eyebrow": "Om mig",
+    "heading": "En rolig stemme, når du har brug for klarhed",
+    "body": "Jeg har brugt mange år på at hjælpe mennesker med at finde svar, ro og retning gennem clairvoyance og healing. Mit arbejde bygger på nærvær, ærlighed og respekt for dit tempo – uanset om du kommer med et konkret spørgsmål, eller du blot søger en pause fra støjen.",
+    "quote": "Jeg tror på, at vi allerede bærer svarene i os. Mit arbejde er at hjælpe dig med at høre dem tydeligere.",
+    "button_text": "Læs mere om mig",
+    "button_url": "#kontakt",
+    "portrait_image": ""
+  },
+  "services": {
+    "eyebrow": "Ydelser",
+    "heading": "Sådan kan jeg hjælpe dig",
+    "body": "Tre veje til mere klarhed, ro og forbindelse til dig selv.",
+    "items": [
+      {
+        "icon": "eye",
+        "title": "Clairvoyance",
+        "description": "Et klart blik på din situation, uden omsvøb. Vi kigger sammen på det, der fylder lige nu, og finder den næste naturlige retning."
+      },
+      {
+        "icon": "radiance",
+        "title": "Healing",
+        "description": "Energetisk healing, der løsner det, som sidder fast i krop og sind, så du kan mærke mere ro og overskud i hverdagen."
+      },
+      {
+        "icon": "flame",
+        "title": "Åndeaftener",
+        "description": "Fælles aftener med clairvoyance, meditation og samtale i trygge rammer, en mulighed for at opleve energiarbejde sammen med andre."
+      }
+    ]
+  },
+  "spotlight": {
+    "eyebrow": "Åndeaftener",
+    "heading": "Kom med til en fælles åndeaften",
+    "body": "Nogle gange er det nemmest at mærke forandring sammen med andre. På åndeaftenerne åbner vi rummet for budskaber, indsigt og fælles ro, i et trygt og uhøjtideligt fællesskab.",
+    "date_label": "Næste åndeaften",
+    "date_value": "Torsdag den 2. oktober kl. 19:00",
+    "location_label": "Sted",
+    "location_value": "Oplyses ved tilmelding",
+    "button_text": "Reservér din plads",
+    "button_url": "#kontakt"
+  },
+  "testimonials": {
+    "eyebrow": "Oplevelser",
+    "heading": "Hvad andre har oplevet",
+    "items": [
+      {
+        "quote": "Jeg gik fra sessionen med en helt ny ro i kroppen. Kim formår at møde én præcis der, hvor man er.",
+        "name": "Louise M."
+      },
+      {
+        "quote": "Præcis, varm og utrolig nærværende. Jeg fik svar på noget, jeg havde båret rundt på i årevis.",
+        "name": "Anders K."
+      },
+      {
+        "quote": "Åndeaftenerne er blevet en fast del af min måned, et pusterum jeg ikke vidste, jeg havde brug for.",
+        "name": "Sofie R."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "heading": "Klar til at opleve hele dig?",
+    "body": "Book en tid til en individuel session, eller skriv til mig, hvis du er i tvivl om, hvad der passer bedst til dig lige nu.",
+    "email": "kontakt@kimnielsen.dk",
+    "phone": "+45 12 34 56 78",
+    "form_success_message": "Tak for din besked, jeg vender tilbage hurtigst muligt."
+  },
+  "footer": {
+    "logo": "Kim Nielsen",
+    "tagline": "Clairvoyance · Healing · Åndeaftener",
+    "email": "kontakt@kimnielsen.dk",
+    "phone": "+45 12 34 56 78",
+    "social": [
+      { "label": "Facebook", "url": "#" },
+      { "label": "Instagram", "url": "#" }
+    ],
+    "copyright": "© 2026 Kim Nielsen. Alle rettigheder forbeholdes."
   }
 }

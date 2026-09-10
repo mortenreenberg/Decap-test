@@ -62,8 +62,6 @@
     background-position: center;
   }
 
-  /* På mobil ligger teksten typisk øverst og fylder mere i bredden,
-     så her bruger vi i stedet et top-til-bund gradient */
   @media (max-width: 768px) {
     .hero-bg {
       background-image:
@@ -129,7 +127,175 @@
   </div>
 </section>
 
+<!-- ============ OM MIG (INTRO) ============ -->
+<section id="om-mig" class="bg-cream py-24 md:py-32">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10">
+    <div class="grid md:grid-cols-[auto,1fr] gap-12 md:gap-20 items-center">
+
+      <div class="flex justify-center md:justify-start">
+        <div class="relative w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden ring-1 ring-gold/30 shadow-[0_20px_60px_-20px_rgba(169,132,63,0.45)]">
+          <div id="intro-portrait-fallback" class="w-full h-full bg-[radial-gradient(circle_at_30%_30%,#DDBD84,#C6A15B_45%,#A9843F_100%)] flex items-center justify-center">
+            <span class="font-serif text-cream text-6xl">K</span>
+          </div>
+          <img id="intro-portrait-img" src="" alt="" class="hidden absolute inset-0 w-full h-full object-cover" />
+        </div>
+      </div>
+
+      <div class="max-w-lg">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="h-px w-8 bg-gold/40"></span>
+          <span id="intro-eyebrow" class="tracked uppercase text-gold-dark text-xs md:text-sm"></span>
+        </div>
+        <h2 id="intro-heading" class="font-serif text-4xl md:text-5xl text-ink leading-tight"></h2>
+        <p id="intro-body" class="text-stone text-base md:text-lg mt-6 leading-relaxed"></p>
+        <p id="intro-quote" class="hidden font-serif italic text-xl md:text-2xl text-gold-dark mt-8 border-l-2 border-gold/40 pl-5"></p>
+        <a id="intro-button" href="#"
+           class="inline-block mt-8 rounded-full border border-ink/30 hover:border-ink text-ink px-8 py-3 text-xs tracked uppercase transition"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ YDELSER ============ -->
+<section id="ydelser" class="bg-sand py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 text-center">
+    <div class="flex items-center justify-center gap-3 mb-5">
+      <span class="h-px w-8 bg-gold/40"></span>
+      <span id="services-eyebrow" class="tracked uppercase text-gold-dark text-xs md:text-sm"></span>
+      <span class="h-px w-8 bg-gold/40"></span>
+    </div>
+    <h2 id="services-heading" class="font-serif text-4xl md:text-5xl text-ink"></h2>
+    <p id="services-body" class="hidden text-stone text-base md:text-lg mt-4 max-w-xl mx-auto"></p>
+
+    <div id="services-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 text-left"></div>
+  </div>
+</section>
+
+<!-- ============ ÅNDEAFTENER (SPOTLIGHT) ============ -->
+<section id="aandeaftener" class="bg-ink py-24 md:py-32 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.08] pointer-events-none"
+       style="background-image: radial-gradient(circle at 15% 20%, #C6A15B 0, transparent 38%), radial-gradient(circle at 85% 80%, #C6A15B 0, transparent 38%);"></div>
+
+  <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center relative">
+    <div class="flex items-center justify-center gap-3 mb-5">
+      <span class="h-px w-8 bg-gold/50"></span>
+      <span id="spotlight-eyebrow" class="tracked uppercase text-gold-light text-xs md:text-sm"></span>
+      <span class="h-px w-8 bg-gold/50"></span>
+    </div>
+    <h2 id="spotlight-heading" class="font-serif text-4xl md:text-5xl text-cream"></h2>
+    <p id="spotlight-body" class="text-cream/70 text-base md:text-lg mt-5 max-w-2xl mx-auto leading-relaxed"></p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 mt-10">
+      <div class="text-center">
+        <p id="spotlight-date-label" class="tracked uppercase text-gold-light text-xs mb-1"></p>
+        <p id="spotlight-date-value" class="font-serif text-xl text-cream"></p>
+      </div>
+      <span class="hidden sm:block w-px h-10 bg-cream/20"></span>
+      <div class="text-center">
+        <p id="spotlight-location-label" class="tracked uppercase text-gold-light text-xs mb-1"></p>
+        <p id="spotlight-location-value" class="font-serif text-xl text-cream"></p>
+      </div>
+    </div>
+
+    <a id="spotlight-button" href="#"
+       class="inline-block mt-10 rounded-full bg-gold hover:bg-gold-light transition text-ink px-9 py-3.5 text-xs tracked uppercase font-medium"></a>
+  </div>
+</section>
+
+<!-- ============ UDTALELSER ============ -->
+<section class="bg-cream py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-6 lg:px-10 text-center">
+    <div class="flex items-center justify-center gap-3 mb-5">
+      <span class="h-px w-8 bg-gold/40"></span>
+      <span id="testimonials-eyebrow" class="tracked uppercase text-gold-dark text-xs md:text-sm"></span>
+      <span class="h-px w-8 bg-gold/40"></span>
+    </div>
+    <h2 id="testimonials-heading" class="font-serif text-4xl md:text-5xl text-ink"></h2>
+
+    <div id="testimonials-grid" class="grid md:grid-cols-3 gap-10 mt-16 text-left"></div>
+  </div>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section id="kontakt" class="bg-sand py-24 md:py-32">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10">
+    <div class="grid md:grid-cols-2 gap-16 items-start">
+
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <span class="h-px w-8 bg-gold/40"></span>
+          <span id="contact-eyebrow" class="tracked uppercase text-gold-dark text-xs md:text-sm"></span>
+        </div>
+        <h2 id="contact-heading" class="font-serif text-4xl md:text-5xl text-ink leading-tight"></h2>
+        <p id="contact-body" class="text-stone text-base md:text-lg mt-6 leading-relaxed max-w-md"></p>
+
+        <div class="mt-10 space-y-3">
+          <a id="contact-email" href="#" class="block text-ink hover:text-gold-dark transition font-serif text-xl"></a>
+          <a id="contact-phone" href="#" class="block text-stone hover:text-gold-dark transition"></a>
+        </div>
+      </div>
+
+      <div>
+        <form id="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?success=true"
+              class="bg-cream rounded-2xl p-8 md:p-10 border border-gold/15 shadow-[0_20px_45px_-30px_rgba(46,42,34,0.35)] space-y-5">
+          <input type="hidden" name="form-name" value="kontakt" />
+          <p class="hidden">
+            <label>Undgå spam: <input name="bot-field" /></label>
+          </p>
+          <div>
+            <label for="navn" class="block text-xs tracked uppercase text-stone mb-2">Navn</label>
+            <input id="navn" name="navn" type="text" required
+                   class="w-full bg-transparent border-b border-ink/20 focus:border-gold-dark outline-none py-2 text-ink transition" />
+          </div>
+          <div>
+            <label for="email" class="block text-xs tracked uppercase text-stone mb-2">E-mail</label>
+            <input id="email" name="email" type="email" required
+                   class="w-full bg-transparent border-b border-ink/20 focus:border-gold-dark outline-none py-2 text-ink transition" />
+          </div>
+          <div>
+            <label for="besked" class="block text-xs tracked uppercase text-stone mb-2">Besked</label>
+            <textarea id="besked" name="besked" rows="4" required
+                      class="w-full bg-transparent border-b border-ink/20 focus:border-gold-dark outline-none py-2 text-ink transition resize-none"></textarea>
+          </div>
+          <button type="submit"
+                  class="w-full rounded-full bg-gold hover:bg-gold-dark transition text-cream px-8 py-3.5 text-xs tracked uppercase">
+            Send besked
+          </button>
+        </form>
+        <p id="contact-success"
+           class="hidden bg-cream rounded-2xl p-8 md:p-10 border border-gold/15 text-center font-serif text-xl text-ink"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink py-16">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+      <div>
+        <p id="footer-logo" class="font-serif text-2xl tracked uppercase text-cream"></p>
+        <p id="footer-tagline" class="tracked uppercase text-gold-light/80 text-xs mt-2"></p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-10 text-cream/70 text-sm">
+        <a id="footer-email" href="#" class="hover:text-gold-light transition"></a>
+        <a id="footer-phone" href="#" class="hover:text-gold-light transition"></a>
+      </div>
+      <div id="footer-social" class="flex gap-5 text-cream/70 text-xs tracked uppercase"></div>
+    </div>
+    <div class="border-t border-cream/10 mt-10 pt-8">
+      <p id="footer-copyright" class="text-cream/40 text-xs"></p>
+    </div>
+  </div>
+</footer>
+
 <script>
+  const ICONS = {
+    eye: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M4 24C4 24 13 13 24 13C35 13 44 24 44 24C44 24 35 35 24 35C13 35 4 24 4 24Z"/><circle cx="24" cy="24" r="5.5"/></svg>`,
+    radiance: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><circle cx="24" cy="24" r="9"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M9.5 9.5l4.2 4.2M34.3 34.3l4.2 4.2M9.5 38.5l4.2-4.2M34.3 13.7l4.2-4.2"/></svg>`,
+    flame: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M24 6C24 6 15 16 15 26C15 33.2 19.8 38 24 38C28.2 38 33 33.2 33 26C33 22 30 19 30 19C30 23 27.5 24.5 27.5 24.5C28.5 20 24 15 24 6Z"/></svg>`,
+  };
+
   async function loadForside() {
     try {
       const res = await fetch('/content/forside.json', { cache: 'no-store' });
@@ -137,6 +303,12 @@
       const data = await res.json();
       renderNav(data.nav);
       renderHero(data.hero);
+      renderIntro(data.intro);
+      renderServices(data.services);
+      renderSpotlight(data.spotlight);
+      renderTestimonials(data.testimonials);
+      renderContact(data.contact);
+      renderFooter(data.footer);
     } catch (err) {
       console.error('Fejl ved indlæsning af indhold:', err);
     }
@@ -190,6 +362,166 @@
     if (hero.background_image) {
       heroSection.style.setProperty('--hero-image', `url('${hero.background_image}')`);
     }
+  }
+
+  function renderIntro(intro) {
+    if (!intro) return;
+    document.getElementById('intro-eyebrow').textContent = intro.eyebrow || '';
+    document.getElementById('intro-heading').textContent = intro.heading || '';
+    document.getElementById('intro-body').textContent = intro.body || '';
+
+    const quoteEl = document.getElementById('intro-quote');
+    if (intro.quote) {
+      quoteEl.textContent = intro.quote;
+      quoteEl.classList.remove('hidden');
+    } else {
+      quoteEl.classList.add('hidden');
+    }
+
+    const btn = document.getElementById('intro-button');
+    btn.textContent = intro.button_text || 'Læs mere om mig';
+    btn.href = intro.button_url || '#';
+
+    const img = document.getElementById('intro-portrait-img');
+    const fallback = document.getElementById('intro-portrait-fallback');
+    if (intro.portrait_image) {
+      img.src = intro.portrait_image;
+      img.alt = intro.heading || 'Portræt';
+      img.classList.remove('hidden');
+      fallback.classList.add('hidden');
+    } else {
+      img.classList.add('hidden');
+      fallback.classList.remove('hidden');
+    }
+  }
+
+  function renderServices(services) {
+    if (!services) return;
+    document.getElementById('services-eyebrow').textContent = services.eyebrow || '';
+    document.getElementById('services-heading').textContent = services.heading || '';
+
+    const bodyEl = document.getElementById('services-body');
+    if (services.body) {
+      bodyEl.textContent = services.body;
+      bodyEl.classList.remove('hidden');
+    } else {
+      bodyEl.classList.add('hidden');
+    }
+
+    const grid = document.getElementById('services-grid');
+    grid.innerHTML = '';
+    (services.items || []).forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'bg-cream rounded-2xl p-8 border border-gold/15 shadow-[0_20px_45px_-30px_rgba(46,42,34,0.35)]';
+      card.innerHTML = `
+        <div class="w-11 h-11 text-gold-dark">${ICONS[item.icon] || ICONS.eye}</div>
+        <h3 class="font-serif text-2xl text-ink mt-5"></h3>
+        <p class="text-stone text-sm md:text-base mt-3 leading-relaxed"></p>
+      `;
+      card.querySelector('h3').textContent = item.title || '';
+      card.querySelector('p').textContent = item.description || '';
+      grid.appendChild(card);
+    });
+  }
+
+  function renderSpotlight(spotlight) {
+    if (!spotlight) return;
+    document.getElementById('spotlight-eyebrow').textContent = spotlight.eyebrow || '';
+    document.getElementById('spotlight-heading').textContent = spotlight.heading || '';
+    document.getElementById('spotlight-body').textContent = spotlight.body || '';
+    document.getElementById('spotlight-date-label').textContent = spotlight.date_label || '';
+    document.getElementById('spotlight-date-value').textContent = spotlight.date_value || '';
+    document.getElementById('spotlight-location-label').textContent = spotlight.location_label || '';
+    document.getElementById('spotlight-location-value').textContent = spotlight.location_value || '';
+
+    const btn = document.getElementById('spotlight-button');
+    btn.textContent = spotlight.button_text || 'Reservér din plads';
+    btn.href = spotlight.button_url || '#';
+  }
+
+  function renderTestimonials(testimonials) {
+    if (!testimonials) return;
+    document.getElementById('testimonials-eyebrow').textContent = testimonials.eyebrow || '';
+    document.getElementById('testimonials-heading').textContent = testimonials.heading || '';
+
+    const grid = document.getElementById('testimonials-grid');
+    grid.innerHTML = '';
+    (testimonials.items || []).forEach(t => {
+      const card = document.createElement('div');
+      card.className = 'px-2';
+      card.innerHTML = `
+        <p class="font-serif text-gold-dark text-5xl leading-none mb-2">&ldquo;</p>
+        <p class="font-serif italic text-xl text-ink leading-snug"></p>
+        <p class="tracked uppercase text-stone text-xs mt-5"></p>
+      `;
+      const paragraphs = card.querySelectorAll('p');
+      paragraphs[1].textContent = t.quote || '';
+      paragraphs[2].textContent = t.name || '';
+      grid.appendChild(card);
+    });
+  }
+
+  function renderContact(contact) {
+    if (!contact) return;
+    document.getElementById('contact-eyebrow').textContent = contact.eyebrow || '';
+    document.getElementById('contact-heading').textContent = contact.heading || '';
+    document.getElementById('contact-body').textContent = contact.body || '';
+
+    const emailEl = document.getElementById('contact-email');
+    emailEl.textContent = contact.email || '';
+    emailEl.href = contact.email ? `mailto:${contact.email}` : '#';
+
+    const phoneEl = document.getElementById('contact-phone');
+    phoneEl.textContent = contact.phone || '';
+    phoneEl.href = contact.phone ? `tel:${contact.phone.replace(/\s+/g, '')}` : '#';
+
+    const form = document.getElementById('contact-form');
+    const successEl = document.getElementById('contact-success');
+    const successMessage = contact.form_success_message || 'Tak for din besked, jeg vender tilbage hurtigst muligt.';
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(data).toString(),
+        });
+        form.classList.add('hidden');
+        successEl.textContent = successMessage;
+        successEl.classList.remove('hidden');
+      } catch (err) {
+        console.error('Kunne ikke sende via fetch, falder tilbage til normal indsendelse:', err);
+        form.submit();
+      }
+    });
+  }
+
+  function renderFooter(footer) {
+    if (!footer) return;
+    document.getElementById('footer-logo').textContent = footer.logo || 'Kim Nielsen';
+    document.getElementById('footer-tagline').textContent = footer.tagline || '';
+
+    const emailEl = document.getElementById('footer-email');
+    emailEl.textContent = footer.email || '';
+    emailEl.href = footer.email ? `mailto:${footer.email}` : '#';
+
+    const phoneEl = document.getElementById('footer-phone');
+    phoneEl.textContent = footer.phone || '';
+    phoneEl.href = footer.phone ? `tel:${footer.phone.replace(/\s+/g, '')}` : '#';
+
+    const socialEl = document.getElementById('footer-social');
+    socialEl.innerHTML = '';
+    (footer.social || []).forEach(s => {
+      const a = document.createElement('a');
+      a.href = s.url || '#';
+      a.textContent = s.label || '';
+      a.className = 'hover:text-gold-light transition';
+      socialEl.appendChild(a);
+    });
+
+    document.getElementById('footer-copyright').textContent = footer.copyright || '';
   }
 
   document.getElementById('menu-toggle').addEventListener('click', () => {

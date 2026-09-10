@@ -26,9 +26,9 @@ collections:
                 summary: "{{fields.label}}"
                 fields:
                   - { label: "Tekst", name: "label", widget: "string" }
-                  - { label: "Link (URL)", name: "url", widget: "string" }
+                  - { label: "Link (URL eller #anker)", name: "url", widget: "string" }
               - { label: "Knaptekst (Book tid)", name: "cta_text", widget: "string", default: "Book tid" }
-              - { label: "Knap-link (Book tid)", name: "cta_url", widget: "string", default: "/book" }
+              - { label: "Knap-link (Book tid)", name: "cta_url", widget: "string", default: "#kontakt" }
 
           - label: "Hero-sektion"
             name: "hero"
@@ -42,7 +42,100 @@ collections:
               - { label: "Underrubrik", name: "subheading", widget: "string", default: "Sind · Hjerte · Krop" }
               - { label: "Brødtekst", name: "body", widget: "text" }
               - { label: "Primær knaptekst", name: "primary_button_text", widget: "string", default: "Læs mere" }
-              - { label: "Primær knap-link", name: "primary_button_url", widget: "string", default: "/om-mig" }
+              - { label: "Primær knap-link", name: "primary_button_url", widget: "string", default: "#om-mig" }
               - { label: "Sekundær knaptekst", name: "secondary_button_text", widget: "string", default: "Kontakt mig" }
-              - { label: "Sekundær knap-link", name: "secondary_button_url", widget: "string", default: "/kontakt" }
+              - { label: "Sekundær knap-link", name: "secondary_button_url", widget: "string", default: "#kontakt" }
               - { label: "Baggrundsbillede", name: "background_image", widget: "image" }
+
+          - label: "Om mig (kort intro)"
+            name: "intro"
+            widget: "object"
+            fields:
+              - { label: "Overskrift (lille)", name: "eyebrow", widget: "string", default: "Om mig" }
+              - { label: "Overskrift", name: "heading", widget: "string" }
+              - { label: "Brødtekst", name: "body", widget: "text" }
+              - { label: "Citat", name: "quote", widget: "string", required: false }
+              - { label: "Knaptekst", name: "button_text", widget: "string", default: "Læs mere om mig" }
+              - { label: "Knap-link", name: "button_url", widget: "string", default: "#kontakt" }
+              - label: "Portræt (valgfrit)"
+                name: "portrait_image"
+                widget: "image"
+                required: false
+                hint: "Uploades der intet billede, vises et dekorativt guld-motiv i stedet."
+
+          - label: "Ydelser"
+            name: "services"
+            widget: "object"
+            fields:
+              - { label: "Overskrift (lille)", name: "eyebrow", widget: "string", default: "Ydelser" }
+              - { label: "Overskrift", name: "heading", widget: "string" }
+              - { label: "Underrubrik", name: "body", widget: "string", required: false }
+              - label: "Ydelser"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - label: "Ikon"
+                    name: "icon"
+                    widget: "select"
+                    options: ["eye", "radiance", "flame"]
+                    default: "eye"
+                    hint: "eye = øje (clairvoyance), radiance = stråler (healing), flame = flamme (åndeaftener)"
+                  - { label: "Titel", name: "title", widget: "string" }
+                  - { label: "Beskrivelse", name: "description", widget: "text" }
+
+          - label: "Åndeaften-fremhævning"
+            name: "spotlight"
+            widget: "object"
+            fields:
+              - { label: "Overskrift (lille)", name: "eyebrow", widget: "string", default: "Åndeaftener" }
+              - { label: "Overskrift", name: "heading", widget: "string" }
+              - { label: "Brødtekst", name: "body", widget: "text" }
+              - { label: "Label (dato)", name: "date_label", widget: "string", default: "Næste åndeaften" }
+              - { label: "Dato/tid", name: "date_value", widget: "string" }
+              - { label: "Label (sted)", name: "location_label", widget: "string", default: "Sted" }
+              - { label: "Sted", name: "location_value", widget: "string" }
+              - { label: "Knaptekst", name: "button_text", widget: "string", default: "Reservér din plads" }
+              - { label: "Knap-link", name: "button_url", widget: "string", default: "#kontakt" }
+
+          - label: "Udtalelser"
+            name: "testimonials"
+            widget: "object"
+            fields:
+              - { label: "Overskrift (lille)", name: "eyebrow", widget: "string", default: "Oplevelser" }
+              - { label: "Overskrift", name: "heading", widget: "string" }
+              - label: "Udtalelser"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: "Citat", name: "quote", widget: "text" }
+                  - { label: "Navn", name: "name", widget: "string" }
+
+          - label: "Kontakt"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Overskrift (lille)", name: "eyebrow", widget: "string", default: "Kontakt" }
+              - { label: "Overskrift", name: "heading", widget: "string" }
+              - { label: "Brødtekst", name: "body", widget: "text" }
+              - { label: "E-mail", name: "email", widget: "string" }
+              - { label: "Telefon", name: "phone", widget: "string" }
+              - { label: "Kvitteringstekst efter afsendt formular", name: "form_success_message", widget: "string" }
+
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Logo-tekst", name: "logo", widget: "string", default: "Kim Nielsen" }
+              - { label: "Undertekst", name: "tagline", widget: "string" }
+              - { label: "E-mail", name: "email", widget: "string" }
+              - { label: "Telefon", name: "phone", widget: "string" }
+              - label: "Sociale links"
+                name: "social"
+                widget: "list"
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: "Platform", name: "label", widget: "string" }
+                  - { label: "Link", name: "url", widget: "string" }
+              - { label: "Copyright-tekst", name: "copyright", widget: "string" }

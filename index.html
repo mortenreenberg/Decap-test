@@ -1,170 +1,177 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kim Nielsen — Clairvoyance, Healing & ÅNDEAFTENER</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kim Nielsen — Clairvoyance, Healing &amp; Åndeaftener</title>
+<meta name="description" content="Oplev hele dig. Kim Nielsen tilbyder clairvoyance, healing og åndeaftener.">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            cinzel: ['Cinzel', 'serif'],
-            cormorant: ['Cormorant Garamond', 'serif'],
-            montserrat: ['Montserrat', 'sans-serif'],
+<!-- Tailwind CSS (CDN) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#F8F2E7',
+          sand: '#EFE3CE',
+          gold: {
+            DEFAULT: '#C6A15B',
+            light: '#DDBD84',
+            dark: '#A9843F',
           },
-          colors: {
-            gold: {
-              300: '#e5ca93',
-              400: '#cbb074',
-              500: '#b89959',
-              600: '#9b7d3f',
-            },
-            warmBg: '#e6ded4'
-          }
-        }
-      }
-    }
-  </script>
+          ink: '#2E2A22',
+          stone: '#6B6355',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'serif'],
+          sans: ['"Jost"', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
 
-  <!-- Decap CMS Identity Widget -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  .tracked { letter-spacing: 0.18em; }
 
-  <style>
-    .gold-gradient-text {
-      background: linear-gradient(135deg, #7a5c28 0%, #b89959 50%, #684a1a 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .gold-btn {
-      background: linear-gradient(135deg, #cbb074 0%, #b89959 100%);
-      transition: all 0.3s ease;
-    }
-    .gold-btn:hover {
-      background: linear-gradient(135deg, #b89959 0%, #9b7d3f 100%);
-      box-shadow: 0 4px 15px rgba(184, 153, 89, 0.4);
-    }
-    .glass-btn {
-      background: rgba(230, 222, 212, 0.4);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(184, 153, 89, 0.5);
-      transition: all 0.3s ease;
-    }
-    .glass-btn:hover {
-      background: rgba(230, 222, 212, 0.7);
-    }
-  </style>
+  /* Hero-baggrund: mørk/gylden gradient-overlay + billede fra CMS,
+     billedet sættes via CSS-variablen --hero-image i JS */
+  .hero-bg {
+    background-image:
+      linear-gradient(90deg, rgba(248,242,231,0.92) 0%, rgba(248,242,231,0.55) 40%, rgba(248,242,231,0.05) 65%),
+      var(--hero-image, none);
+    background-size: cover;
+    background-position: center;
+  }
+</style>
 </head>
-<body class="bg-[#ebdcd0] text-[#4a3f35] font-montserrat min-h-screen relative overflow-x-hidden">
+<body class="bg-cream text-ink font-sans antialiased">
 
-  <!-- Baggrundsbillede -->
-  <div id="bg-container" class="absolute inset-0 bg-cover bg-center z-0 opacity-40 mix-blend-overlay pointer-events-none"></div>
+<!-- ============ NAVIGATION ============ -->
+<header class="fixed top-0 inset-x-0 z-50">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-10 py-5">
+    <a href="/" id="nav-logo" class="font-serif text-xl md:text-2xl tracked uppercase text-ink">Kim Nielsen</a>
 
-  <!-- Header / Navigation -->
-  <header class="relative z-10 max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
-    <a href="#" id="site-title" class="font-cinzel text-xl md:text-2xl tracking-[0.25em] text-[#5a4833] font-medium">KIM NIELSEN</a>
-    
-    <nav class="hidden md:flex items-center space-x-8 text-xs tracking-[0.2em] font-medium text-[#6b5842]">
-      <a href="#" class="hover:text-gold-600 transition">FORSIDE</a>
-      <a href="#om-mig" class="hover:text-gold-600 transition">OM MIG</a>
-      <a href="#ydelser" class="hover:text-gold-600 transition">YDELSER</a>
-      <a href="#aandeaftener" class="hover:text-gold-600 transition">ÅNDEAFTENER</a>
-      <a href="#kontakt" class="hover:text-gold-600 transition">KONTAKT</a>
-    </nav>
+    <ul id="nav-links" class="hidden lg:flex items-center gap-8 text-xs tracked uppercase text-ink/80"></ul>
 
-    <a href="#booking" id="btn-book" class="gold-btn text-white text-xs font-medium tracking-[0.15em] px-6 py-2.5 rounded-full shadow-md">
-      BOOK TID
+    <div class="flex items-center gap-4">
+      <a id="nav-cta" href="#"
+         class="hidden sm:inline-block rounded-full border border-gold-dark/60 bg-gold/90 hover:bg-gold px-6 py-2.5 text-xs tracked uppercase text-cream transition">
+        Book tid
+      </a>
+      <button id="menu-toggle" class="lg:hidden text-ink" aria-label="Åbn menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobilmenu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-cream/98 backdrop-blur border-t border-gold/20 px-6 py-6">
+    <ul id="mobile-nav-links" class="flex flex-col gap-5 text-sm tracked uppercase text-ink/80"></ul>
+    <a id="mobile-cta" href="#"
+       class="mt-6 inline-block rounded-full border border-gold-dark/60 bg-gold px-6 py-2.5 text-xs tracked uppercase text-cream text-center w-full">
+      Book tid
     </a>
-  </header>
+  </div>
+</header>
 
-  <!-- Hero Section -->
-  <main class="relative z-10 max-w-7xl mx-auto px-6 pt-8 pb-16 lg:pt-12 lg:pb-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    
-    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-      <h1 id="hero-title" class="font-cinzel text-5xl sm:text-6xl md:text-7xl font-normal leading-tight tracking-wider gold-gradient-text uppercase whitespace-pre-line">
-        OPLEV<br>HELE DIG
-      </h1>
+<!-- ============ HERO ============ -->
+<section id="hero" class="hero-bg min-h-screen flex items-center pt-28 pb-16">
+  <div class="max-w-7xl mx-auto w-full px-6 lg:px-10">
+    <div class="max-w-xl">
+      <p id="hero-tags" class="tracked uppercase text-gold-dark text-xs md:text-sm mb-5"></p>
+      <h1 id="hero-heading" class="font-serif text-6xl sm:text-7xl md:text-8xl leading-[0.95] text-ink"></h1>
+      <p id="hero-subheading" class="font-serif italic text-2xl md:text-3xl text-stone mt-6"></p>
+      <p id="hero-body" class="text-stone text-base md:text-lg mt-6 max-w-sm"></p>
 
-      <div class="flex items-center justify-center lg:justify-start space-x-4 py-2">
-        <h2 id="hero-subtitle" class="font-cormorant italic text-2xl sm:text-3xl text-[#6b563f]">
-          Sind · Hjerte · Krop
-        </h2>
-      </div>
-
-      <div class="flex justify-center lg:justify-start">
-        <span class="text-gold-500 text-sm">✦</span>
-      </div>
-
-      <p id="services-tagline" class="text-xs sm:text-sm tracking-[0.25em] text-[#7a6752] font-medium uppercase">
-        CLAIRVOYANCE · HEALING · ÅNDEAFTENER
-      </p>
-
-      <p id="hero-description" class="font-cormorant text-xl sm:text-2xl text-[#5a4a38] italic font-light max-w-lg mx-auto lg:mx-0">
-        Der er mere i dig, end du måske har opdaget endnu.
-      </p>
-
-      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-        <a href="#ydelser" id="btn-primary" class="gold-btn text-white text-xs tracking-[0.2em] font-medium px-8 py-3.5 rounded-full shadow-lg w-full sm:w-auto text-center">
-          LÆS MERE
-        </a>
-        <a href="#kontakt" id="btn-secondary" class="glass-btn text-[#5a4833] text-xs tracking-[0.2em] font-medium px-8 py-3.5 rounded-full w-full sm:w-auto text-center">
-          KONTAKT MIG
-        </a>
+      <div class="flex flex-wrap items-center gap-4 mt-10">
+        <a id="hero-primary-btn" href="#"
+           class="rounded-full bg-gold hover:bg-gold-dark transition text-cream px-8 py-3 text-xs tracked uppercase"></a>
+        <a id="hero-secondary-btn" href="#"
+           class="rounded-full border border-ink/30 hover:border-ink text-ink px-8 py-3 text-xs tracked uppercase transition"></a>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="lg:col-span-5 flex justify-center lg:justify-end relative">
-      <div class="relative w-full max-w-md aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30">
-        <img id="kim-image" src="" alt="Kim Nielsen" class="w-full h-full object-cover object-top">
-      </div>
-    </div>
-
-  </main>
-
-  <script>
-    fetch('/content/forside.json')
-      .then(response => response.json())
-      .then(data => {
-        if(data.site_title) document.getElementById('site-title').textContent = data.site_title;
-        if(data.hero_title) document.getElementById('hero-title').innerText = data.hero_title;
-        if(data.hero_subtitle) document.getElementById('hero-subtitle').textContent = data.hero_subtitle;
-        if(data.services_tagline) document.getElementById('services-tagline').textContent = data.services_tagline;
-        if(data.hero_description) document.getElementById('hero-description').textContent = data.hero_description;
-        
-        if(data.btn_primary_text) document.getElementById('btn-primary').textContent = data.btn_primary_text;
-        if(data.btn_primary_link) document.getElementById('btn-primary').href = data.btn_primary_link;
-        
-        if(data.btn_secondary_text) document.getElementById('btn-secondary').textContent = data.btn_secondary_text;
-        if(data.btn_secondary_link) document.getElementById('btn-secondary').href = data.btn_secondary_link;
-
-        if(data.btn_book_text) document.getElementById('btn-book').textContent = data.btn_book_text;
-        if(data.btn_book_link) document.getElementById('btn-book').href = data.btn_book_link;
-
-        if(data.bg_image) document.getElementById('bg-container').style.backgroundImage = `url('${data.bg_image}')`;
-        if(data.kim_image) document.getElementById('kim-image').src = data.kim_image;
-      })
-      .catch(err => console.error('Fejl ved indlæsning af JSON:', err));
-  </script>
-
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
+<script>
+  async function loadForside() {
+    try {
+      const res = await fetch('/content/forside.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('Kunne ikke hente forside.json');
+      const data = await res.json();
+      renderNav(data.nav);
+      renderHero(data.hero);
+    } catch (err) {
+      console.error('Fejl ved indlæsning af indhold:', err);
     }
-  </script>
+  }
+
+  function renderNav(nav) {
+    if (!nav) return;
+    document.getElementById('nav-logo').textContent = nav.logo || 'Kim Nielsen';
+
+    const desktopList = document.getElementById('nav-links');
+    const mobileList = document.getElementById('mobile-nav-links');
+    desktopList.innerHTML = '';
+    mobileList.innerHTML = '';
+
+    (nav.links || []).forEach(link => {
+      const a = document.createElement('a');
+      a.href = link.url || '#';
+      a.textContent = link.label || '';
+      a.className = 'hover:text-gold-dark transition';
+
+      const li = document.createElement('li');
+      li.appendChild(a);
+      desktopList.appendChild(li);
+      mobileList.appendChild(li.cloneNode(true));
+    });
+
+    const ctaText = nav.cta_text || 'Book tid';
+    const ctaUrl = nav.cta_url || '#';
+    document.getElementById('nav-cta').textContent = ctaText;
+    document.getElementById('nav-cta').href = ctaUrl;
+    document.getElementById('mobile-cta').textContent = ctaText;
+    document.getElementById('mobile-cta').href = ctaUrl;
+  }
+
+  function renderHero(hero) {
+    if (!hero) return;
+    document.getElementById('hero-tags').textContent = (hero.tags || []).join(' · ');
+    document.getElementById('hero-heading').textContent = hero.heading || '';
+    document.getElementById('hero-subheading').textContent = hero.subheading || '';
+    document.getElementById('hero-body').textContent = hero.body || '';
+
+    const primaryBtn = document.getElementById('hero-primary-btn');
+    primaryBtn.textContent = hero.primary_button_text || 'Læs mere';
+    primaryBtn.href = hero.primary_button_url || '#';
+
+    const secondaryBtn = document.getElementById('hero-secondary-btn');
+    secondaryBtn.textContent = hero.secondary_button_text || 'Kontakt mig';
+    secondaryBtn.href = hero.secondary_button_url || '#';
+
+    const heroSection = document.getElementById('hero');
+    if (hero.background_image) {
+      heroSection.style.setProperty('--hero-image', `url('${hero.background_image}')`);
+    }
+  }
+
+  document.getElementById('menu-toggle').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+
+  loadForside();
+</script>
+
 </body>
 </html>

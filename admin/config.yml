@@ -2,27 +2,47 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "assets/images"
-public_folder: "/assets/images"
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: simple
 
 collections:
-  - name: "pages"
+  - name: "sider"
     label: "Sider"
     files:
-      - file: "content/forside.json"
+      - name: "forside"
         label: "Forside"
-        name: "forside"
+        file: "content/forside.json"
         fields:
-          - { label: "Sidenavn / Logo", name: "site_title", widget: "string" }
-          - { label: "Hero Overskrift", name: "hero_title", widget: "text", help: "Brug linjeskift for at opdele overskriften" }
-          - { label: "Underoverskrift (f.eks. Sind · Hjerte · Krop)", name: "hero_subtitle", widget: "string" }
-          - { label: "Nøgleord (f.eks. CLAIRVOYANCE · HEALING...)", name: "services_tagline", widget: "string" }
-          - { label: "Brødtekst", name: "hero_description", widget: "string" }
-          - { label: "Knap 1 Tekst", name: "btn_primary_text", widget: "string" }
-          - { label: "Knap 1 Link", name: "btn_primary_link", widget: "string" }
-          - { label: "Knap 2 Tekst", name: "btn_secondary_text", widget: "string" }
-          - { label: "Knap 2 Link", name: "btn_secondary_link", widget: "string" }
-          - { label: "Book Knap Tekst", name: "btn_book_text", widget: "string" }
-          - { label: "Book Knap Link", name: "btn_book_link", widget: "string" }
-          - { label: "Baggrundsbillede", name: "bg_image", widget: "image" }
-          - { label: "Billede af Kim", name: "kim_image", widget: "image" }
+          - label: "Navigation"
+            name: "nav"
+            widget: "object"
+            fields:
+              - { label: "Logo-tekst", name: "logo", widget: "string", default: "Kim Nielsen" }
+              - label: "Menupunkter"
+                name: "links"
+                widget: "list"
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: "Tekst", name: "label", widget: "string" }
+                  - { label: "Link (URL)", name: "url", widget: "string" }
+              - { label: "Knaptekst (Book tid)", name: "cta_text", widget: "string", default: "Book tid" }
+              - { label: "Knap-link (Book tid)", name: "cta_url", widget: "string", default: "/book" }
+
+          - label: "Hero-sektion"
+            name: "hero"
+            widget: "object"
+            fields:
+              - label: "Sub-mærker (fx Clairvoyance, Healing, Åndeaftener)"
+                name: "tags"
+                widget: "list"
+                default: ["Clairvoyance", "Healing", "Åndeaftener"]
+              - { label: "Overskrift", name: "heading", widget: "string", default: "Oplev hele dig" }
+              - { label: "Underrubrik", name: "subheading", widget: "string", default: "Sind · Hjerte · Krop" }
+              - { label: "Brødtekst", name: "body", widget: "text" }
+              - { label: "Primær knaptekst", name: "primary_button_text", widget: "string", default: "Læs mere" }
+              - { label: "Primær knap-link", name: "primary_button_url", widget: "string", default: "/om-mig" }
+              - { label: "Sekundær knaptekst", name: "secondary_button_text", widget: "string", default: "Kontakt mig" }
+              - { label: "Sekundær knap-link", name: "secondary_button_url", widget: "string", default: "/kontakt" }
+              - { label: "Baggrundsbillede", name: "background_image", widget: "image" }

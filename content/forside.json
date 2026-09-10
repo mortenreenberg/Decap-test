@@ -1,15 +1,25 @@
 {
-  "site_title": "KIM NIELSEN",
-  "hero_title": "OPLEV\nHELE DIG",
-  "hero_subtitle": "Sind · Hjerte · Krop",
-  "services_tagline": "CLAIRVOYANCE · HEALING · ÅNDEAFTENER",
-  "hero_description": "Der er mere i dig, end du måske har opdaget endnu.",
-  "btn_primary_text": "LÆS MERE",
-  "btn_primary_link": "#ydelser",
-  "btn_secondary_text": "KONTAKT MIG",
-  "btn_secondary_link": "#kontakt",
-  "btn_book_text": "BOOK TID",
-  "btn_book_link": "#booking",
-  "bg_image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80",
-  "kim_image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80"
+  "nav": {
+    "logo": "Kim Nielsen",
+    "links": [
+      { "label": "Forside", "url": "/" },
+      { "label": "Om mig", "url": "/om-mig" },
+      { "label": "Ydelser", "url": "/ydelser" },
+      { "label": "Åndeaftener", "url": "/aandeaftener" },
+      { "label": "Kontakt", "url": "/kontakt" }
+    ],
+    "cta_text": "Book tid",
+    "cta_url": "/book"
+  },
+  "hero": {
+    "tags": ["Clairvoyance", "Healing", "Åndeaftener"],
+    "heading": "Oplev hele dig",
+    "subheading": "Sind · Hjerte · Krop",
+    "body": "Der er mere i dig, end du måske har opdaget endnu.",
+    "primary_button_text": "Læs mere",
+    "primary_button_url": "/om-mig",
+    "secondary_button_text": "Kontakt mig",
+    "secondary_button_url": "/kontakt",
+    "background_image": "/images/uploads/kim-hero.jpg"
+  }
 }

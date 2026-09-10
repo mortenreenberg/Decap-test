@@ -2,23 +2,172 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8">
-  <title>Decap CMS Test</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-</head>
-<body style="font-family: sans-serif; padding: 2rem; max-width: 600px; margin: auto;">
-  <h1 id="overskrift">Henter overskrift...</h1>
-  <p id="underoverskrift">Henter underoverskrift...</p>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kim Nielsen — Clairvoyance, Healing & Åndeaftener</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
   <script>
-    // Henter indholdet fra JSON-filen som CMS'et opdaterer
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            cormorant: ['Cormorant Garamond', 'serif'],
+            montserrat: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            gold: {
+              300: '#e5ca93',
+              400: '#cbb074',
+              500: '#b89959',
+              600: '#9b7d3f',
+            },
+            warmBg: '#e6ded4'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Decap CMS Identity Widget -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <style>
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #7a5c28 0%, #b89959 50%, #684a1a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gold-btn {
+      background: linear-gradient(135deg, #cbb074 0%, #b89959 100%);
+      transition: all 0.3s ease;
+    }
+    .gold-btn:hover {
+      background: linear-gradient(135deg, #b89959 0%, #9b7d3f 100%);
+      box-shadow: 0 4px 15px rgba(184, 153, 89, 0.4);
+    }
+    .glass-btn {
+      background: rgba(230, 222, 212, 0.4);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(184, 153, 89, 0.5);
+      transition: all 0.3s ease;
+    }
+    .glass-btn:hover {
+      background: rgba(230, 222, 212, 0.7);
+    }
+  </style>
+</head>
+<body class="bg-[#ebdcd0] text-[#4a3f35] font-montserrat min-h-screen relative overflow-x-hidden">
+
+  <!-- Baggrundsbillede med blødt filter -->
+  <div id="bg-container" class="absolute inset-0 bg-cover bg-center z-0 opacity-40 mix-blend-overlay pointer-events-none" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80');"></div>
+
+  <!-- Header / Navigation -->
+  <header class="relative z-10 max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+    <a href="#" id="site-title" class="font-cinzel text-xl md:text-2xl tracking-[0.25em] text-[#5a4833] font-medium">KIM NIELSEN</a>
+    
+    <nav class="hidden md:flex items-center space-x-8 text-xs tracking-[0.2em] font-medium text-[#6b5842]">
+      <a href="#" class="hover:text-gold-600 transition">FORSIDE</a>
+      <a href="#om-mig" class="hover:text-gold-600 transition">OM MIG</a>
+      <a href="#ydelser" class="hover:text-gold-600 transition">YDELSER</a>
+      <a href="#aandeaftener" class="hover:text-gold-600 transition">ÅNDEAFTENER</a>
+      <a href="#kontakt" class="hover:text-gold-600 transition">KONTAKT</a>
+    </nav>
+
+    <a href="#booking" id="btn-book" class="gold-btn text-white text-xs font-medium tracking-[0.15em] px-6 py-2.5 rounded-full shadow-md">
+      BOOK TID
+    </a>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="relative z-10 max-w-7xl mx-auto px-6 pt-8 pb-16 lg:pt-12 lg:pb-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    
+    <!-- Venstre side: Tekst & Buttons -->
+    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+      
+      <!-- Hovedoverskrift -->
+      <h1 id="hero-title" class="font-cinzel text-5xl sm:text-6xl md:text-7xl font-normal leading-tight tracking-wider gold-gradient-text uppercase whitespace-pre-line">
+        OPLEV<br>HELE DIG
+      </h1>
+
+      <!-- Subtitle med stjerne/sol-element -->
+      <div class="flex items-center justify-center lg:justify-start space-x-4 py-2">
+        <h2 id="hero-subtitle" class="font-cormorant italic text-2xl sm:text-3xl text-[#6b563f]">
+          Sind · Hjerte · Krop
+        </h2>
+      </div>
+
+      <!-- Lille dekorativt ikon -->
+      <div class="flex justify-center lg:justify-start">
+        <span class="text-gold-500 text-sm">✦</span>
+      </div>
+
+      <!-- Nøgleord -->
+      <p id="services-tagline" class="text-xs sm:text-sm tracking-[0.25em] text-[#7a6752] font-medium uppercase">
+        CLAIRVOYANCE · HEALING · ÅNDEAFTENER
+      </p>
+
+      <!-- Brødtekst -->
+      <p id="hero-description" class="font-cormorant text-xl sm:text-2xl text-[#5a4a38] italic font-light max-w-lg mx-auto lg:mx-0">
+        Der er mere i dig, end du måske har opdaget endnu.
+      </p>
+
+      <!-- Knapper -->
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+        <a href="#ydelser" id="btn-primary" class="gold-btn text-white text-xs tracking-[0.2em] font-medium px-8 py-3.5 rounded-full shadow-lg w-full sm:w-auto text-center">
+          LÆS MERE
+        </a>
+        <a href="#kontakt" id="btn-secondary" class="glass-btn text-[#5a4833] text-xs tracking-[0.2em] font-medium px-8 py-3.5 rounded-full w-full sm:w-auto text-center">
+          KONTAKT MIG
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Højre side: Billede af Kim -->
+    <div class="lg:col-span-5 flex justify-center lg:justify-end relative">
+      <div class="relative w-full max-w-md aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30">
+        <img id="kim-image" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80" alt="Kim Nielsen" class="w-full h-full object-cover object-top">
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Fetch Data fra JSON -->
+  <script>
     fetch('/content/forside.json')
       .then(response => response.json())
       .then(data => {
-        document.getElementById('overskrift').innerText = data.overskrift;
-        document.getElementById('underoverskrift').innerText = data.underoverskrift;
-      });
+        if(data.site_title) document.getElementById('site-title').innerText = data.site_title;
+        if(data.hero_title) document.getElementById('hero-title').innerText = data.hero_title;
+        if(data.hero_subtitle) document.getElementById('hero-subtitle').innerText = data.hero_subtitle;
+        if(data.services_tagline) document.getElementById('services-tagline').innerText = data.services_tagline;
+        if(data.hero_description) document.getElementById('hero-description').innerText = data.hero_description;
+        
+        if(data.btn_primary_text) document.getElementById('btn-primary').innerText = data.btn_primary_text;
+        if(data.btn_primary_link) document.getElementById('btn-primary').href = data.btn_primary_link;
+        
+        if(data.btn_secondary_text) document.getElementById('btn-secondary').innerText = data.btn_secondary_text;
+        if(data.btn_secondary_link) document.getElementById('btn-secondary').href = data.btn_secondary_link;
 
-    // Omdirigerer brugeren efter login via Netlify Identity
+        if(data.btn_book_text) document.getElementById('btn-book').innerText = data.btn_book_text;
+        if(data.btn_book_link) document.getElementById('btn-book').href = data.btn_book_link;
+
+        if(data.bg_image) document.getElementById('bg-container').style.backgroundImage = `url('${data.bg_image}')`;
+        if(data.kim_image) document.getElementById('kim-image').src = data.kim_image;
+      })
+      .catch(err => console.error('Fejl ved indlæsning af JSON:', err));
+  </script>
+
+  <!-- Netlify Identity redirect script til CMS login -->
+  <script>
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {

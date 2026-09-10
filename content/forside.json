@@ -1,4 +1,15 @@
 {
-  "overskrift": "Oplev hele dig",
-  "underoverskrift": "Sind · Hjerte · Krop"
+  "site_title": "KIM NIELSEN",
+  "hero_title": "OPLEV\nHELE DIG",
+  "hero_subtitle": "Sind · Hjerte · Krop",
+  "services_tagline": "CLAIRVOYANCE · HEALING · ÅNDEAFTENER",
+  "hero_description": "Der er mere i dig, end du måske har opdaget endnu.",
+  "btn_primary_text": "LÆS MERE",
+  "btn_primary_link": "#ydelser",
+  "btn_secondary_text": "KONTAKT MIG",
+  "btn_secondary_link": "#kontakt",
+  "btn_book_text": "BOOK TID",
+  "btn_book_link": "#booking",
+  "bg_image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80",
+  "kim_image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80"
 }

@@ -2,16 +2,27 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images"
-public_folder: "/images"
+media_folder: "assets/images"
+public_folder: "/assets/images"
 
 collections:
-  - name: "sider"
+  - name: "pages"
     label: "Sider"
     files:
-      - name: "forside"
-        label: "Forside Tekster"
-        file: "content/forside.json"
+      - file: "content/forside.json"
+        label: "Forside"
+        name: "forside"
         fields:
-          - { label: "Overskrift", name: "overskrift", widget: "string" }
-          - { label: "Underoverskrift", name: "underoverskrift", widget: "string" }
+          - { label: "Sidenavn / Logo", name: "site_title", widget: "string" }
+          - { label: "Hero Overskrift", name: "hero_title", widget: "text", help: "Brug linjeskift for at opdele overskriften" }
+          - { label: "Underoverskrift (f.eks. Sind · Hjerte · Krop)", name: "hero_subtitle", widget: "string" }
+          - { label: "Nøgleord (f.eks. CLAIRVOYANCE · HEALING...)", name: "services_tagline", widget: "string" }
+          - { label: "Brødtekst", name: "hero_description", widget: "string" }
+          - { label: "Knap 1 Tekst", name: "btn_primary_text", widget: "string" }
+          - { label: "Knap 1 Link", name: "btn_primary_link", widget: "string" }
+          - { label: "Knap 2 Tekst", name: "btn_secondary_text", widget: "string" }
+          - { label: "Knap 2 Link", name: "btn_secondary_link", widget: "string" }
+          - { label: "Book Knap Tekst", name: "btn_book_text", widget: "string" }
+          - { label: "Book Knap Link", name: "btn_book_link", widget: "string" }
+          - { label: "Baggrundsbillede", name: "bg_image", widget: "image" }
+          - { label: "Billede af Kim", name: "kim_image", widget: "image" }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <title>Decap CMS Test</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body style="font-family: sans-serif; padding: 2rem; max-width: 600px; margin: auto;">
+  <h1 id="overskrift">Henter overskrift...</h1>
+  <p id="underoverskrift">Henter underoverskrift...</p>
+
+  <script>
+    // Henter indholdet fra JSON-filen som CMS'et opdaterer
+    fetch('/content/forside.json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('overskrift').innerText = data.overskrift;
+        document.getElementById('underoverskrift').innerText = data.underoverskrift;
+      });
+
+    // Omdirigerer brugeren efter login via Netlify Identity
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

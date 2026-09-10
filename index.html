@@ -41,21 +41,47 @@
   html { scroll-behavior: smooth; }
   .tracked { letter-spacing: 0.18em; }
 
-  /* Hero-baggrund: mørk/gylden gradient-overlay + billede fra CMS,
-     billedet sættes via CSS-variablen --hero-image i JS */
+  /*
+    Hero-baggrund: to lag —
+    1) et gradient-lag der garanterer læsbarhed (solidt panel bag tekst,
+       nedtonet scrim hen over resten af billedet)
+    2) selve billedet fra CMS'et (--hero-image), sat via JS
+  */
   .hero-bg {
     background-image:
-      linear-gradient(90deg, rgba(248,242,231,0.92) 0%, rgba(248,242,231,0.55) 40%, rgba(248,242,231,0.05) 65%),
+      linear-gradient(
+        100deg,
+        rgba(248,242,231,0.97) 0%,
+        rgba(248,242,231,0.94) 32%,
+        rgba(248,242,231,0.55) 48%,
+        rgba(46,42,34,0.32) 62%,
+        rgba(46,42,34,0.24) 100%
+      ),
       var(--hero-image, none);
     background-size: cover;
     background-position: center;
+  }
+
+  /* På mobil ligger teksten typisk øverst og fylder mere i bredden,
+     så her bruger vi i stedet et top-til-bund gradient */
+  @media (max-width: 768px) {
+    .hero-bg {
+      background-image:
+        linear-gradient(
+          180deg,
+          rgba(248,242,231,0.97) 0%,
+          rgba(248,242,231,0.93) 60%,
+          rgba(46,42,34,0.34) 100%
+        ),
+        var(--hero-image, none);
+    }
   }
 </style>
 </head>
 <body class="bg-cream text-ink font-sans antialiased">
 
 <!-- ============ NAVIGATION ============ -->
-<header class="fixed top-0 inset-x-0 z-50">
+<header class="fixed top-0 inset-x-0 z-50 bg-cream/80 backdrop-blur-md border-b border-gold/10">
   <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-10 py-5">
     <a href="/" id="nav-logo" class="font-serif text-xl md:text-2xl tracked uppercase text-ink">Kim Nielsen</a>
 

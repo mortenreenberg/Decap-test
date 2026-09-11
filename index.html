@@ -43,39 +43,64 @@
 
   /*
     Hero-baggrund: billedet fylder hele sektionen (ligesom referencedesignet),
-    med en ensartet, mørk scrim hen over det HELE billede (ikke kun den ene side)
-    for at garantere læsbarhed, uanset hvor på billedet teksten står.
+    med en ensartet, mørk scrim hen over det HELE billede (ikke kun den ene side).
+    Teksten er lys (creme) i stedet for mørk - det er den kombination, der rent
+    faktisk garanterer læsbarhed hen over et fotografi, uanset hvor lyst/mørkt
+    den enkelte del af billedet er.
   */
   .hero-bg {
     background-image:
-      linear-gradient(rgba(30,26,18,0.4), rgba(30,26,18,0.4)),
+      linear-gradient(rgba(20,17,11,0.48), rgba(20,17,11,0.48)),
       var(--hero-image, none);
     background-size: cover;
     background-position: center;
   }
 
-  /* Blød skygge bag hero-teksten som ekstra sikkerhed på lyse partier af billedet,
-     uden at det kræver et solidt panel bag teksten. */
+  /* Mørk glød bag den lyse hero-tekst, som ekstra sikkerhed hvis teksten
+     rammer et særligt lyst parti af billedet (fx himlen). */
   .hero-text-shadow {
-    text-shadow: 0 2px 20px rgba(20,16,10,0.35), 0 1px 3px rgba(20,16,10,0.25);
+    text-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  /*
+    Navigationen er transparent oven på hero-billedet, så teksten skal være lys der -
+    og mørk, når headeren bliver til en solid bjælke efter scroll.
+  */
+  #site-header {
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
+  }
+  #site-header.is-scrolled {
+    background-color: rgba(248,242,231,0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom-color: rgba(198,161,91,0.15);
+    box-shadow: 0 1px 12px -4px rgba(46,42,34,0.15);
+  }
+  .nav-adaptive {
+    color: #F8F2E7;
+    transition: color 0.3s;
+  }
+  #site-header.is-scrolled .nav-adaptive {
+    color: #2E2A22;
   }
 </style>
 </head>
 <body class="bg-cream text-ink font-sans antialiased">
 
 <!-- ============ NAVIGATION ============ -->
-<header id="site-header" class="fixed top-0 inset-x-0 z-50 bg-transparent border-b border-transparent transition-colors duration-300">
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300">
   <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-10 py-5">
-    <a href="/" id="nav-logo" class="font-serif text-xl md:text-2xl tracked uppercase text-ink">Kim Nielsen</a>
+    <a href="/" id="nav-logo" class="nav-adaptive font-serif text-xl md:text-2xl tracked uppercase">Kim Nielsen</a>
 
-    <ul id="nav-links" class="hidden lg:flex items-center gap-8 text-xs tracked uppercase text-ink/80"></ul>
+    <ul id="nav-links" class="nav-adaptive hidden lg:flex items-center gap-8 text-xs tracked uppercase"></ul>
 
     <div class="flex items-center gap-4">
       <a id="nav-cta" href="#"
          class="hidden sm:inline-block rounded-full border border-gold-dark/60 bg-gold/90 hover:bg-gold px-6 py-2.5 text-xs tracked uppercase text-cream transition">
         Book tid
       </a>
-      <button id="menu-toggle" class="lg:hidden text-ink" aria-label="Åbn menu">
+      <button id="menu-toggle" class="nav-adaptive lg:hidden" aria-label="Åbn menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
         </svg>
@@ -98,15 +123,15 @@
   <div class="max-w-7xl mx-auto w-full px-6 lg:px-10">
     <div class="max-w-xl">
       <p id="hero-tags" class="hero-text-shadow tracked uppercase text-gold-light text-xs md:text-sm mb-5"></p>
-      <h1 id="hero-heading" class="hero-text-shadow font-serif text-6xl sm:text-7xl md:text-8xl leading-[0.95] text-ink"></h1>
-      <p id="hero-subheading" class="hero-text-shadow font-serif italic text-2xl md:text-3xl text-ink/85 mt-6"></p>
-      <p id="hero-body" class="hero-text-shadow text-ink/70 text-base md:text-lg mt-6 max-w-sm"></p>
+      <h1 id="hero-heading" class="hero-text-shadow font-serif text-6xl sm:text-7xl md:text-8xl leading-[0.95] text-cream"></h1>
+      <p id="hero-subheading" class="hero-text-shadow font-serif italic text-2xl md:text-3xl text-cream/90 mt-6"></p>
+      <p id="hero-body" class="hero-text-shadow text-cream/80 text-base md:text-lg mt-6 max-w-sm"></p>
 
       <div class="flex flex-wrap items-center gap-4 mt-10">
         <a id="hero-primary-btn" href="#"
            class="rounded-full bg-gold hover:bg-gold-dark transition text-cream px-8 py-3 text-xs tracked uppercase shadow-[0_8px_24px_-8px_rgba(20,16,10,0.5)]"></a>
         <a id="hero-secondary-btn" href="#"
-           class="rounded-full border border-ink/40 hover:border-ink bg-cream/25 hover:bg-cream/40 backdrop-blur-sm text-ink px-8 py-3 text-xs tracked uppercase transition"></a>
+           class="rounded-full border border-cream/50 hover:border-cream bg-cream/10 hover:bg-cream/20 backdrop-blur-sm text-cream px-8 py-3 text-xs tracked uppercase transition"></a>
       </div>
     </div>
   </div>
@@ -545,20 +570,11 @@
     document.getElementById('mobile-menu').classList.toggle('hidden');
   });
 
-  // Navigationen er transparent oven på hero-billedet og bliver først
-  // til en almindelig, læsbar bjælke, når man har scrollet forbi den.
+  // Navigationen er transparent med lys tekst oven på hero-billedet, og
+  // bliver til en solid, mørk-på-lys bjælke, når man har scrollet forbi den.
   const siteHeader = document.getElementById('site-header');
-  const SOLID_CLASSES = ['bg-cream/90', 'backdrop-blur-md', 'border-gold/10', 'shadow-[0_1px_12px_-4px_rgba(46,42,34,0.15)]'];
-  const TRANSPARENT_CLASSES = ['bg-transparent', 'border-transparent'];
-
   function updateHeaderState() {
-    const scrolled = window.scrollY > 24;
-    siteHeader.classList.toggle('bg-cream/90', scrolled);
-    siteHeader.classList.toggle('backdrop-blur-md', scrolled);
-    siteHeader.classList.toggle('border-gold/10', scrolled);
-    siteHeader.classList.toggle('shadow-[0_1px_12px_-4px_rgba(46,42,34,0.15)]', scrolled);
-    siteHeader.classList.toggle('bg-transparent', !scrolled);
-    siteHeader.classList.toggle('border-transparent', !scrolled);
+    siteHeader.classList.toggle('is-scrolled', window.scrollY > 24);
   }
   window.addEventListener('scroll', updateHeaderState, { passive: true });
   updateHeaderState();

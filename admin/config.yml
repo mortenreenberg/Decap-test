@@ -46,12 +46,6 @@ collections:
               - { label: "Sekundær knaptekst", name: "secondary_button_text", widget: "string", default: "Kontakt mig" }
               - { label: "Sekundær knap-link", name: "secondary_button_url", widget: "string", default: "#kontakt" }
               - { label: "Baggrundsbillede", name: "background_image", widget: "image" }
-              - label: "Portræt af Kim (gennemsigtig baggrund)"
-                name: "portrait_image"
-                widget: "image"
-                required: false
-                hint: "Brug et udklippet foto med gennemsigtig baggrund (PNG/WebP). Uploades der intet, vises hero-sektionen uden portræt."
-              - { label: "Alt-tekst til portræt", name: "portrait_alt", widget: "string", default: "Kim Nielsen", required: false }
 
           - label: "Om mig (kort intro)"
             name: "intro"

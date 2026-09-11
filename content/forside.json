@@ -20,7 +20,9 @@
     "primary_button_url": "#om-mig",
     "secondary_button_text": "Kontakt mig",
     "secondary_button_url": "#kontakt",
-    "background_image": "/images/uploads/hero-background.jpg"
+    "background_image": "/images/uploads/hero-background.jpg",
+    "portrait_image": "/images/uploads/hero-portrait.webp",
+    "portrait_alt": "Kim Nielsen"
   },
   "intro": {
     "eyebrow": "Om mig",

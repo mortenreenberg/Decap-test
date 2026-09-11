@@ -84,6 +84,13 @@
   #site-header.is-scrolled .nav-adaptive {
     color: #2E2A22;
   }
+
+  /* Blødt fald i bunden af Kim-portrættet, så den lige kant fra udklipningen
+     ikke ses - han "smelter" ned i baggrunden i stedet for at blive skåret hårdt af. */
+  .portrait-fade {
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  }
 </style>
 </head>
 <body class="bg-cream text-ink font-sans antialiased">
@@ -119,8 +126,10 @@
 </header>
 
 <!-- ============ HERO ============ -->
-<section id="hero" class="hero-bg min-h-screen flex items-center pt-28 pb-16">
-  <div class="max-w-7xl mx-auto w-full px-6 lg:px-10">
+<!-- 2-kolonne grid på desktop (tekst venstre / Kim-portræt højre, bundforankret og
+     blødt udtonet). På mobil: tekst øverst, portræt i normalt flow derunder. -->
+<section id="hero" class="hero-bg min-h-screen relative overflow-hidden">
+  <div class="max-w-7xl mx-auto w-full px-6 lg:px-10 pt-28 pb-16 lg:pb-0 relative z-10 lg:min-h-screen lg:flex lg:items-center">
     <div class="max-w-xl">
       <p id="hero-tags" class="hero-text-shadow tracked uppercase text-gold-light text-xs md:text-sm mb-5"></p>
       <h1 id="hero-heading" class="hero-text-shadow font-serif text-6xl sm:text-7xl md:text-8xl leading-[0.95] text-cream"></h1>
@@ -135,6 +144,14 @@
       </div>
     </div>
   </div>
+
+  <!-- Kim-portræt: normalt flow-element under teksten på mobil, bundforankret
+       og bredside-forankret ved sektionens højre kant på desktop. -->
+  <img id="hero-portrait" src="" alt=""
+       class="portrait-fade hidden relative z-[1] mt-8 mx-auto w-1/2 max-w-[260px]
+              lg:absolute lg:bottom-0 lg:right-4 xl:right-10 lg:z-[1]
+              lg:mt-0 lg:mx-0 lg:w-auto lg:max-w-none lg:h-[76vh] xl:h-[84vh]
+              object-contain object-bottom pointer-events-none select-none" />
 </section>
 
 <!-- ============ OM MIG (INTRO) ============ -->
@@ -378,6 +395,15 @@
     const heroSection = document.getElementById('hero');
     if (hero.background_image) {
       heroSection.style.setProperty('--hero-image', `url('${hero.background_image}')`);
+    }
+
+    const portrait = document.getElementById('hero-portrait');
+    if (hero.portrait_image) {
+      portrait.src = hero.portrait_image;
+      portrait.alt = hero.portrait_alt || '';
+      portrait.classList.remove('hidden');
+    } else {
+      portrait.classList.add('hidden');
     }
   }
 

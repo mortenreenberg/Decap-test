@@ -42,7 +42,7 @@
   .tracked { letter-spacing: 0.18em; }
 
   /*
-    Hero-baggrund: ét samlet foto af Kim fylder hele sektionen på desktop.
+    Hero-baggrund (desktop): ét samlet foto af Kim fylder hele sektionen.
     Billedet er i sig selv lyst/diset i venstre side og skarpt om Kim i højre
     side, så vi lægger en blød, lys (creme) gradient hen over venstre del -
     dér hvor teksten står - og lader billedet stå helt uberørt om Kim selv.
@@ -63,27 +63,36 @@
     background-size: cover;
     background-position: center;
   }
-  /* På mobil/tablet vises billedet i stedet som et almindeligt element under
-     teksten (#hero-mobile-image) - her skal sektionens egen baggrund bare
-     være den almindelige creme-farve, uden foto. */
-  @media (max-width: 1023.98px) {
-    .hero-bg {
-      background-image: none;
-      background-color: #F8F2E7;
-    }
+
+  /*
+    Hero-billede (mobil/tablet): samme foto, men beskåret til et lodret
+    format med et hjørne-ankret lys felt i øverste venstre hjørne - dér hvor
+    overskriften ligger. Kim selv (i højre/nederste del af billedet) er
+    urørt. Under billedet fortsætter resten af teksten på almindelig
+    creme-baggrund, så vi undgår at klemme al teksten ind over fotoet.
+  */
+  .hero-mobile-scrim {
+    background-image: radial-gradient(ellipse 130% 95% at 0% 0%,
+      rgba(248,242,231,0.64) 0%,
+      rgba(248,242,231,0.50) 20%,
+      rgba(248,242,231,0.30) 40%,
+      rgba(248,242,231,0.13) 58%,
+      rgba(248,242,231,0) 74%);
   }
 
   /*
-    Navigationen er transparent oven på hero-billedet. Fordi den lyse gradient
-    ovenfor altid ligger under logo og menupunkter, kan teksten være mørk
-    (ink) både før og efter scroll - kun selve headerens baggrund skifter til
-    en solid bjælke, når man scroller ned.
+    Navigationen er transparent oven på hero-billedet. En meget svag, fast
+    lys stribe øverst (uafhængig af selve fotoet) sikrer altid tilstrækkelig
+    kontrast til logo/menu/hamburger-ikonet, uden at skjule billedet bagved.
+    Efter scroll bliver headeren til en solid bjælke i stedet.
   */
   #site-header {
-    background-color: transparent;
+    background-image: linear-gradient(to bottom, rgba(248,242,231,0.4), rgba(248,242,231,0) 100%);
     border-bottom: 1px solid transparent;
+    transition: background-color 0.3s, box-shadow 0.3s;
   }
   #site-header.is-scrolled {
+    background-image: none;
     background-color: rgba(248,242,231,0.9);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -128,28 +137,50 @@
 </header>
 
 <!-- ============ HERO ============ -->
-<!-- Ét samlet foto af Kim som fuld-bredde baggrund på desktop (tekst venstre,
-     Kim i sit eget billede til højre). På mobil/tablet erstattes baggrunden
-     af en almindelig creme-flade, og et beskåret foto af Kim vises i stedet
-     som et normalt element under teksten (#hero-mobile-image). -->
-<section id="hero" class="hero-bg min-h-screen relative overflow-hidden">
-  <div class="max-w-7xl mx-auto w-full px-6 lg:px-10 pt-28 pb-16 lg:pb-16 relative z-10 lg:min-h-screen lg:flex lg:items-center">
-    <div class="max-w-xl">
-      <p id="hero-tags" class="tracked uppercase text-gold-dark text-xs md:text-sm mb-5"></p>
-      <h1 id="hero-heading" class="font-serif text-6xl sm:text-7xl md:text-8xl leading-[0.95] text-ink"></h1>
-      <p id="hero-subheading" class="font-serif italic text-2xl md:text-3xl text-ink/80 mt-6"></p>
-      <p id="hero-body" class="text-stone text-base md:text-lg mt-6 max-w-sm"></p>
+<section id="hero" class="relative overflow-hidden">
 
-      <div class="flex flex-wrap items-center gap-4 mt-10">
-        <a id="hero-primary-btn" href="#"
+  <!-- Desktop/lg+: ét samlet foto af Kim som fuld-bredde baggrund, tekst i
+       venstre side ovenpå den lyse del af billedet. -->
+  <div class="hero-bg hidden lg:block min-h-screen relative">
+    <div class="max-w-7xl mx-auto w-full px-6 lg:px-10 pt-28 relative z-10 min-h-screen flex items-center">
+      <div class="max-w-xl">
+        <p id="hero-tags" class="tracked uppercase text-gold-dark text-sm mb-5"></p>
+        <h1 id="hero-heading" class="font-serif text-7xl md:text-8xl leading-[0.95] text-ink"></h1>
+        <p id="hero-subheading" class="font-serif italic text-3xl text-ink/80 mt-6"></p>
+        <p id="hero-body" class="text-stone text-lg mt-6 max-w-sm"></p>
+
+        <div class="flex flex-wrap items-center gap-4 mt-10">
+          <a id="hero-primary-btn" href="#"
+             class="rounded-full bg-gold hover:bg-gold-dark transition text-cream px-8 py-3 text-xs tracked uppercase shadow-[0_8px_24px_-8px_rgba(20,16,10,0.35)]"></a>
+          <a id="hero-secondary-btn" href="#"
+             class="rounded-full border border-ink/30 hover:border-ink text-ink px-8 py-3 text-xs tracked uppercase transition"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobil/tablet: kort billedblok med overskrift ovenpå den lyse del af
+       samme foto, derefter resten af teksten på almindelig creme-baggrund
+       nedenunder - undgår at klemme al teksten ind over Kim. -->
+  <div class="lg:hidden">
+    <div class="relative aspect-[4/5] overflow-hidden">
+      <img id="hero-photo-mobile" src="" alt=""
+           class="absolute inset-0 w-full h-full object-cover" style="object-position: 85% 0%;" />
+      <div class="hero-mobile-scrim absolute inset-0"></div>
+      <div class="relative z-10 h-full flex flex-col justify-end px-6 pb-8 pt-24">
+        <p id="hero-tags-m" class="tracked uppercase text-gold-dark text-xs mb-3"></p>
+        <h1 id="hero-heading-m" class="font-serif text-5xl leading-[0.95] text-ink"></h1>
+      </div>
+    </div>
+    <div class="bg-cream px-6 pt-8 pb-14">
+      <p id="hero-subheading-m" class="font-serif italic text-2xl text-ink/80"></p>
+      <p id="hero-body-m" class="text-stone text-base mt-4 max-w-sm"></p>
+      <div class="flex flex-wrap items-center gap-3 mt-8">
+        <a id="hero-primary-btn-m" href="#"
            class="rounded-full bg-gold hover:bg-gold-dark transition text-cream px-8 py-3 text-xs tracked uppercase shadow-[0_8px_24px_-8px_rgba(20,16,10,0.35)]"></a>
-        <a id="hero-secondary-btn" href="#"
+        <a id="hero-secondary-btn-m" href="#"
            class="rounded-full border border-ink/30 hover:border-ink text-ink px-8 py-3 text-xs tracked uppercase transition"></a>
       </div>
-
-      <!-- Kun synlig under lg: samme foto af Kim, beskåret til mobilformat. -->
-      <img id="hero-mobile-image" src="" alt=""
-           class="hidden lg:hidden mt-10 w-full max-w-sm mx-auto rounded-[28px] shadow-[0_20px_60px_-20px_rgba(46,42,34,0.35)] object-cover" />
     </div>
   </div>
 </section>
@@ -379,7 +410,10 @@
 
   function renderHero(hero) {
     if (!hero) return;
-    document.getElementById('hero-tags').textContent = (hero.tags || []).join(' · ');
+    const tagsText = (hero.tags || []).join(' · ');
+
+    // Desktop
+    document.getElementById('hero-tags').textContent = tagsText;
     document.getElementById('hero-heading').textContent = hero.heading || '';
     document.getElementById('hero-subheading').textContent = hero.subheading || '';
     document.getElementById('hero-body').textContent = hero.body || '';
@@ -397,13 +431,26 @@
       heroSection.style.setProperty('--hero-image', `url('${hero.background_image}')`);
     }
 
-    const mobileImg = document.getElementById('hero-mobile-image');
-    if (hero.background_image_mobile) {
-      mobileImg.src = hero.background_image_mobile;
-      mobileImg.alt = hero.mobile_image_alt || '';
-      mobileImg.classList.remove('hidden');
-    } else {
-      mobileImg.classList.add('hidden');
+    // Mobil/tablet - samme indhold, egne elementer (billedet ligger som en
+    // almindelig beskåret <img>, ikke en CSS-baggrund, så det samme
+    // background_image genbruges uden en separat mobilfil).
+    document.getElementById('hero-tags-m').textContent = tagsText;
+    document.getElementById('hero-heading-m').textContent = hero.heading || '';
+    document.getElementById('hero-subheading-m').textContent = hero.subheading || '';
+    document.getElementById('hero-body-m').textContent = hero.body || '';
+
+    const primaryBtnM = document.getElementById('hero-primary-btn-m');
+    primaryBtnM.textContent = hero.primary_button_text || 'Læs mere';
+    primaryBtnM.href = hero.primary_button_url || '#';
+
+    const secondaryBtnM = document.getElementById('hero-secondary-btn-m');
+    secondaryBtnM.textContent = hero.secondary_button_text || 'Kontakt mig';
+    secondaryBtnM.href = hero.secondary_button_url || '#';
+
+    if (hero.background_image) {
+      const photoMobile = document.getElementById('hero-photo-mobile');
+      photoMobile.src = hero.background_image;
+      photoMobile.alt = '';
     }
   }
 

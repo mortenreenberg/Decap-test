@@ -42,29 +42,42 @@
   .tracked { letter-spacing: 0.18em; }
 
   /*
-    Hero-baggrund: billedet fylder hele sektionen (ligesom referencedesignet),
-    med en ensartet, mørk scrim hen over det HELE billede (ikke kun den ene side).
-    Teksten er lys (creme) i stedet for mørk - det er den kombination, der rent
-    faktisk garanterer læsbarhed hen over et fotografi, uanset hvor lyst/mørkt
-    den enkelte del af billedet er.
+    Hero-baggrund: ét samlet foto af Kim fylder hele sektionen på desktop.
+    Billedet er i sig selv lyst/diset i venstre side og skarpt om Kim i højre
+    side, så vi lægger en blød, lys (creme) gradient hen over venstre del -
+    dér hvor teksten står - og lader billedet stå helt uberørt om Kim selv.
+    Da gradienten ligger i CSS (ikke bagt ind i billedfilen), får ethvert nyt
+    billede uploadet via CMS'et automatisk samme behandling.
   */
   .hero-bg {
     background-image:
-      linear-gradient(rgba(20,17,11,0.48), rgba(20,17,11,0.48)),
+      linear-gradient(90deg,
+        rgba(248,242,231,0.62) 0%,
+        rgba(248,242,231,0.56) 12%,
+        rgba(248,242,231,0.46) 22%,
+        rgba(248,242,231,0.34) 32%,
+        rgba(248,242,231,0.22) 42%,
+        rgba(248,242,231,0.11) 52%,
+        rgba(248,242,231,0) 62%),
       var(--hero-image, none);
     background-size: cover;
     background-position: center;
   }
-
-  /* Mørk glød bag den lyse hero-tekst, som ekstra sikkerhed hvis teksten
-     rammer et særligt lyst parti af billedet (fx himlen). */
-  .hero-text-shadow {
-    text-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 1px 3px rgba(0,0,0,0.3);
+  /* På mobil/tablet vises billedet i stedet som et almindeligt element under
+     teksten (#hero-mobile-image) - her skal sektionens egen baggrund bare
+     være den almindelige creme-farve, uden foto. */
+  @media (max-width: 1023.98px) {
+    .hero-bg {
+      background-image: none;
+      background-color: #F8F2E7;
+    }
   }
 
   /*
-    Navigationen er transparent oven på hero-billedet, så teksten skal være lys der -
-    og mørk, når headeren bliver til en solid bjælke efter scroll.
+    Navigationen er transparent oven på hero-billedet. Fordi den lyse gradient
+    ovenfor altid ligger under logo og menupunkter, kan teksten være mørk
+    (ink) både før og efter scroll - kun selve headerens baggrund skifter til
+    en solid bjælke, når man scroller ned.
   */
   #site-header {
     background-color: transparent;
@@ -78,10 +91,6 @@
     box-shadow: 0 1px 12px -4px rgba(46,42,34,0.15);
   }
   .nav-adaptive {
-    color: #F8F2E7;
-    transition: color 0.3s;
-  }
-  #site-header.is-scrolled .nav-adaptive {
     color: #2E2A22;
   }
 </style>
@@ -119,20 +128,28 @@
 </header>
 
 <!-- ============ HERO ============ -->
-<section id="hero" class="hero-bg min-h-screen flex items-center pt-28 pb-16">
-  <div class="max-w-7xl mx-auto w-full px-6 lg:px-10">
+<!-- Ét samlet foto af Kim som fuld-bredde baggrund på desktop (tekst venstre,
+     Kim i sit eget billede til højre). På mobil/tablet erstattes baggrunden
+     af en almindelig creme-flade, og et beskåret foto af Kim vises i stedet
+     som et normalt element under teksten (#hero-mobile-image). -->
+<section id="hero" class="hero-bg min-h-screen relative overflow-hidden">
+  <div class="max-w-7xl mx-auto w-full px-6 lg:px-10 pt-28 pb-16 lg:pb-16 relative z-10 lg:min-h-screen lg:flex lg:items-center">
     <div class="max-w-xl">
-      <p id="hero-tags" class="hero-text-shadow tracked uppercase text-gold-light text-xs md:text-sm mb-5"></p>
-      <h1 id="hero-heading" class="hero-text-shadow font-serif text-6xl sm:text-7xl md:text-8xl leading-[0.95] text-cream"></h1>
-      <p id="hero-subheading" class="hero-text-shadow font-serif italic text-2xl md:text-3xl text-cream/90 mt-6"></p>
-      <p id="hero-body" class="hero-text-shadow text-cream/80 text-base md:text-lg mt-6 max-w-sm"></p>
+      <p id="hero-tags" class="tracked uppercase text-gold-dark text-xs md:text-sm mb-5"></p>
+      <h1 id="hero-heading" class="font-serif text-6xl sm:text-7xl md:text-8xl leading-[0.95] text-ink"></h1>
+      <p id="hero-subheading" class="font-serif italic text-2xl md:text-3xl text-ink/80 mt-6"></p>
+      <p id="hero-body" class="text-stone text-base md:text-lg mt-6 max-w-sm"></p>
 
       <div class="flex flex-wrap items-center gap-4 mt-10">
         <a id="hero-primary-btn" href="#"
-           class="rounded-full bg-gold hover:bg-gold-dark transition text-cream px-8 py-3 text-xs tracked uppercase shadow-[0_8px_24px_-8px_rgba(20,16,10,0.5)]"></a>
+           class="rounded-full bg-gold hover:bg-gold-dark transition text-cream px-8 py-3 text-xs tracked uppercase shadow-[0_8px_24px_-8px_rgba(20,16,10,0.35)]"></a>
         <a id="hero-secondary-btn" href="#"
-           class="rounded-full border border-cream/50 hover:border-cream bg-cream/10 hover:bg-cream/20 backdrop-blur-sm text-cream px-8 py-3 text-xs tracked uppercase transition"></a>
+           class="rounded-full border border-ink/30 hover:border-ink text-ink px-8 py-3 text-xs tracked uppercase transition"></a>
       </div>
+
+      <!-- Kun synlig under lg: samme foto af Kim, beskåret til mobilformat. -->
+      <img id="hero-mobile-image" src="" alt=""
+           class="hidden lg:hidden mt-10 w-full max-w-sm mx-auto rounded-[28px] shadow-[0_20px_60px_-20px_rgba(46,42,34,0.35)] object-cover" />
     </div>
   </div>
 </section>
@@ -378,6 +395,15 @@
     const heroSection = document.getElementById('hero');
     if (hero.background_image) {
       heroSection.style.setProperty('--hero-image', `url('${hero.background_image}')`);
+    }
+
+    const mobileImg = document.getElementById('hero-mobile-image');
+    if (hero.background_image_mobile) {
+      mobileImg.src = hero.background_image_mobile;
+      mobileImg.alt = hero.mobile_image_alt || '';
+      mobileImg.classList.remove('hidden');
+    } else {
+      mobileImg.classList.add('hidden');
     }
   }
 

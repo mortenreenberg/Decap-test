@@ -45,7 +45,13 @@ collections:
               - { label: "Primær knap-link", name: "primary_button_url", widget: "string", default: "#om-mig" }
               - { label: "Sekundær knaptekst", name: "secondary_button_text", widget: "string", default: "Kontakt mig" }
               - { label: "Sekundær knap-link", name: "secondary_button_url", widget: "string", default: "#kontakt" }
-              - { label: "Baggrundsbillede", name: "background_image", widget: "image", hint: "Bruges både til desktop (fuldt baggrundsbillede) og mobil/tablet (beskåret automatisk til et lodret udsnit). Kim (eller motivet) bør stå i højre side af billedet, med lys/luftig baggrund i venstre/øverste del, hvor teksten ligger ovenpå." }
+              - { label: "Baggrundsbillede (desktop)", name: "background_image", widget: "image", hint: "Vises som fuldt baggrundsbillede på store skærme. Kim (eller motivet) bør stå i højre side af billedet, med lys/luftig baggrund i venstre side, hvor teksten ligger ovenpå." }
+              - label: "Billede af Kim (mobil/tablet)"
+                name: "background_image_mobile"
+                widget: "image"
+                required: false
+                hint: "Vises som almindeligt billede under teksten på mindre skærme, hvor det brede baggrundsbillede ikke passer godt. Uploades der intet, vises hero-sektionen uden foto på mobil."
+              - { label: "Alt-tekst til mobilbillede", name: "mobile_image_alt", widget: "string", default: "Kim Nielsen", required: false }
 
           - label: "Om mig (kort intro)"
             name: "intro"

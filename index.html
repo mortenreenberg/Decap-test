@@ -79,7 +79,7 @@
 <body class="bg-cream text-ink font-sans antialiased">
 
 <!-- ============ NAVIGATION ============ -->
-<header class="fixed top-0 inset-x-0 z-50 bg-cream/80 backdrop-blur-md border-b border-gold/10">
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 bg-transparent border-b border-transparent transition-colors duration-300">
   <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-10 py-5">
     <a href="/" id="nav-logo" class="font-serif text-xl md:text-2xl tracked uppercase text-ink">Kim Nielsen</a>
 
@@ -559,6 +559,24 @@
   document.getElementById('menu-toggle').addEventListener('click', () => {
     document.getElementById('mobile-menu').classList.toggle('hidden');
   });
+
+  // Navigationen er transparent oven på hero-billedet og bliver først
+  // til en almindelig, læsbar bjælke, når man har scrollet forbi den.
+  const siteHeader = document.getElementById('site-header');
+  const SOLID_CLASSES = ['bg-cream/90', 'backdrop-blur-md', 'border-gold/10', 'shadow-[0_1px_12px_-4px_rgba(46,42,34,0.15)]'];
+  const TRANSPARENT_CLASSES = ['bg-transparent', 'border-transparent'];
+
+  function updateHeaderState() {
+    const scrolled = window.scrollY > 24;
+    siteHeader.classList.toggle('bg-cream/90', scrolled);
+    siteHeader.classList.toggle('backdrop-blur-md', scrolled);
+    siteHeader.classList.toggle('border-gold/10', scrolled);
+    siteHeader.classList.toggle('shadow-[0_1px_12px_-4px_rgba(46,42,34,0.15)]', scrolled);
+    siteHeader.classList.toggle('bg-transparent', !scrolled);
+    siteHeader.classList.toggle('border-transparent', !scrolled);
+  }
+  window.addEventListener('scroll', updateHeaderState, { passive: true });
+  updateHeaderState();
 
   loadForside();
 </script>
